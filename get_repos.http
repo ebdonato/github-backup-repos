@@ -1,0 +1,5 @@
+###
+# @name get_repos
+# @prompt token GitHub Personal Access Token
+GET https://api.github.com/user/repos
+Authorization: token {{token}}
