@@ -1,0 +1,12 @@
+{
+    "cSpell.words": ["tsup"],
+    "rest-client.previewOption": "headers",
+    "rest-client.environmentVariables": {
+        "local": {
+            "baseUrl": "http://localhost:3000"
+        },
+        "production": {
+            "baseUrl": "https://github-backup-repos.onrender.com"
+        }
+    }
+}

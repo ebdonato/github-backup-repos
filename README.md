@@ -1,5 +1,17 @@
 # Github Backup Repositories
 
+## The App
+
+This Express app has one root route that responses a zipped file containing all the repositories. To make a successful request, must be authenticated with a unique secret token.
+
+To server the app, this environment must be setup at least:
+
+-   BEARER_TOKEN: it will be the unique secret for the request;
+-   GITHUB_USERNAME: GitHub username to get repositories from;
+-   GITHUB_TOKEN: GitHub personal access token for authentication.
+
+> More environment variables can be found at the [./src/constants.ts](./src/constants.ts) file.
+
 ## The Script
 
 The script automates the process of cloning GitHub repositories, both public and private, and then zips them into a single file. Here's a breakdown of what the script does:
@@ -38,9 +50,9 @@ docker run -e USERNAME=your_username -e TOKEN=your_personal_access_token -e REPO
 
 Setup the environment variables as follows:
 
--   USERNAME: your GitHub username
--   TOKEN: your personal access token
--   REPOS_PER_PAGE: the number of repositories to retrieve per page. Defaults to 100
+-   USERNAME: your GitHub username;
+-   TOKEN: your personal access token;
+-   REPOS_PER_PAGE: the number of repositories to retrieve per page. Defaults to 100.
 
 Replace `/path/to/local/folder` with the path to the local folder where you want to store backup zipped file locally.
 

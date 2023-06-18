@@ -1,5 +1,9 @@
 ###
-# @name get_repos
-# @prompt token GitHub Personal Access Token
+# @name get_repos_from_github
 GET https://api.github.com/user/repos
-Authorization: token {{token}}
+Authorization: token {{$dotenv GITHUB_TOKEN}}
+
+###
+# @name get_file
+GET {{baseUrl}}
+Authorization: Bearer {{$dotenv BEARER_TOKEN}}
