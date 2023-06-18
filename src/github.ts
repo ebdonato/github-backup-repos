@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import AdmZip from "adm-zip";
-import fetch from "node-fetch";
+import axios from "axios";
 import shell from "shelljs";
 
 import {
@@ -10,25 +10,28 @@ import {
     GITHUB_REPOS_PER_PAGE,
 } from "./constants";
 
+interface GitHubRepoInfo {
+    name: string;
+    owner: {
+        login: string;
+    };
+}
+
 export async function getAllRepositories(folderName = "temp") {
     const folderPath = `./${folderName}`;
 
     try {
-        const response = await fetch(
-            `https://api.github.com/user/repos?per_page=${GITHUB_REPOS_PER_PAGE}`,
-            {
-                method: "GET",
-                headers: {
-                    Authorization: `token ${GITHUB_TOKEN}`,
-                    Accept: "application/vnd.github.v3+json",
-                },
-            }
-        );
+        const url = `https://api.github.com/user/repos?per_page=${GITHUB_REPOS_PER_PAGE}`;
 
-        const repositories = (await response.json()) as {
-            name: string;
-            owner: { login: string };
-        }[];
+        const response = await axios({
+            url,
+            method: "GET",
+            headers: {
+                Authorization: `token ${GITHUB_TOKEN}`,
+            },
+        });
+
+        const repositories = response.data as GitHubRepoInfo[];
 
         !fs.existsSync(folderPath) && fs.mkdirSync(folderPath);
         !fs.existsSync("public") && fs.mkdirSync("public");
