@@ -7,3 +7,7 @@ Authorization: token {{$dotenv GITHUB_TOKEN}}
 # @name get_file
 GET {{baseUrl}}
 Authorization: Bearer {{$dotenv BEARER_TOKEN}}
+
+###
+# @name health
+GET {{baseUrl}}/health

@@ -64,6 +64,10 @@ app.get("/", async (req, res) => {
     }
 });
 
+app.get("/health", (_, res) => {
+    res.send("Hello World!");
+});
+
 app.all("*", (_, res) => {
     res.status(404).send("🚫 Rota Inválida 🚫");
 });
