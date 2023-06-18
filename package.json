@@ -6,8 +6,8 @@
     "scripts": {
         "lint": "eslint --ext .ts ./src",
         "format": "prettier --write \"**/*.{ts,md,json}\" --ignore-path .prettierignore",
-        "start": "npm run build && node dist/index.js",
-        "build": "rimraf dist && tsup src/index.ts",
+        "start": "npm run build && node dist/server.js",
+        "build": "rimraf dist && tsup src/server.ts",
         "dev": "tsx watch src/server.ts"
     },
     "repository": {
