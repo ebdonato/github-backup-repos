@@ -45,7 +45,7 @@ This command builds the image and assigns it the name github-sync-image.
 Once the image is built, you can run a container from it, passing the USERNAME and TOKEN as environment variables, and mapping a local folder to the container's volume:
 
 ```shell
-docker run -e USERNAME=your_username -e TOKEN=your_personal_access_token -e REPOS_PER_PAGE=100-v /path/to/local/folder:/app github-sync-image
+docker run -e USERNAME=your_username -e TOKEN=your_personal_access_token -e REPOS_PER_PAGE=100 -v /path/to/local/folder:/app github-sync-image
 ```
 
 Setup the environment variables as follows:
